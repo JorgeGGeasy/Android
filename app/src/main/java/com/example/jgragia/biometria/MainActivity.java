@@ -14,6 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/*
+// Nombre fichero: MainActivity.java
+// Fecha: 16/10/2021
+// Autor: Jorge Grau Giannakakis
+// Descripción: Es la actividad principal de la aplicación
+*/
+
 public class MainActivity extends AppCompatActivity implements LocationListener {
 
     private static MainActivity instancia;
@@ -35,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         setContentView(R.layout.activity_main);
 
         ultimaMedidaTexto = findViewById(R.id.ultimaMedicion);
+
         detener = findViewById(R.id.detener);
         detener.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

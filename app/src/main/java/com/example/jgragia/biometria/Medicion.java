@@ -1,5 +1,12 @@
 package com.example.jgragia.biometria;
 
+/*
+// Nombre fichero: Medicion.java
+// Fecha: 16/10/2021
+// Autor: Jorge Grau Giannakakis
+// Descripción: Objeto medicion
+*/
+
 public class Medicion {
 
     private double valor;
