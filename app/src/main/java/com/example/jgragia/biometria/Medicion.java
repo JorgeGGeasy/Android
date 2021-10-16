@@ -1,7 +1,7 @@
 package com.example.jgragia.biometria;
 
 public class Medicion {
-    
+
     private double valor;
     private double latitud;
     private double longitud;
