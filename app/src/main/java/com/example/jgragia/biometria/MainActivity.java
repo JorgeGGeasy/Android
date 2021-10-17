@@ -68,26 +68,35 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     // Devuelve una instancia de MainActivity para poder usar la requestQueue
+    // -> getInstance() -> instancia : MainActivity
+    // @returns La instancia de MainActivity
     public static MainActivity getInstance() {
         return instancia;
     }
 
     // Devuelve el valor de latitud
+    // -> getLatitud() -> latitud : double
+    // @returns La coordenada de la latitud
     public static double getLatitud() {
         return latitud;
     }
 
     // Devuelve el valor de longitud
+    // -> getLongitud() -> longitud : double
+    // @returns La coordenada de la longitud
     public static double getLongitud() {
         return longitud;
     }
 
     // Actualiza la medicion que se muestra en pantalla
+    // medicion : Medicion -> actualizarUltimaMedicion() ->
+    // @params La ultima medicion generada por este usuario
     public void actualizarUltimaMedicion(Medicion medicion){
         ultimaMedidaTexto.setText(Double.toString(medicion.getValor()));
     }
 
     // Detiene el servicio en segundo plano
+    // -> detenerServicio() ->
     public void detenerServicio(){
         stopService(new Intent(MainActivity.this, Servicio.class));
         arrancar.setClickable(true);
@@ -97,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     // Enciende el servivicio en segundo plano
+    // -> arrancarServicio() ->
     public void arrancarServicio(){
         startService(new Intent(MainActivity.this, Servicio.class));
         arrancar.setClickable(false);

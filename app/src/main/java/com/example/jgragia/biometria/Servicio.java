@@ -75,6 +75,8 @@ public class Servicio extends Service {
 
     Handler handler = new Handler();
 
+    // Enciende la logica y simula el dispositivo arduino
+    // -> ejecutarTarea() ->
     public void ejecutarTarea() {
         // Se crea el objeto calendar que nos servira para mandar la fecha
         calendar = Calendar.getInstance();

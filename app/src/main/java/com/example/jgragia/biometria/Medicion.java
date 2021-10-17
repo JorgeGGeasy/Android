@@ -46,6 +46,7 @@ public class Medicion {
         this.fecha = fecha;
     }
 
+    // Constructor
     public Medicion(double valor, double latitud, double longitud, String fecha) {
         this.valor = valor;
         this.latitud = latitud;
