@@ -40,6 +40,8 @@ public class Servicio extends Service {
 
     @Override
     public int onStartCommand(Intent intenc, int flags, int idArranque) {
+
+        // Se crea la notificación
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(
@@ -48,6 +50,7 @@ public class Servicio extends Service {
             notificationChannel.setDescription("Descripcion del canal");
             notificationManager.createNotificationChannel(notificationChannel);
         }
+
         NotificationCompat.Builder notificacion =
                 new NotificationCompat.Builder(this, CANAL_ID)
                         .setSmallIcon(R.mipmap.ic_launcher)
@@ -73,32 +76,34 @@ public class Servicio extends Service {
     Handler handler = new Handler();
 
     public void ejecutarTarea() {
+        // Se crea el objeto calendar que nos servira para mandar la fecha
         calendar = Calendar.getInstance();
+        // Se especifica el formato que ha de seguir
         dateFormat = new SimpleDateFormat("yyyy-dd-MM HH:mm:ss");
 
         logica.iniciarLogica();
 
+        // Esta tarea se repite cada 5 segundos, emulando el recibo de datos por parte del sensor
         handler.postDelayed(new Runnable() {
             public void run() {
                 calendar = Calendar.getInstance();
                 dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 date = dateFormat.format(calendar.getTime());
 
-                // Por aqui recibiria un dato
                 valor = new Random().nextInt(61);
                 Medicion medicion = new Medicion(valor, MainActivity.getLatitud(), MainActivity.getLongitud(), date);
                 // función a ejecutar
-
-
-                logica.insertarMedicion(medicion); // función para refrescar la ubicación del conductor, creada en otra línea de código
+                logica.insertarMedicion(medicion);
                 logica.mostrarMedicion(medicion);
                 handler.postDelayed(this, TIEMPO);
+
             }
 
         }, TIEMPO);
 
     }
 
+    // Cuando se detiene el servicio se ejecuta esta linea de codigo
     @Override public void onDestroy() {
         Toast.makeText(this,"Servicio detenido",
                 Toast.LENGTH_SHORT).show();

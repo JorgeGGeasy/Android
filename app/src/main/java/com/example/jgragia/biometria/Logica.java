@@ -27,10 +27,12 @@ public class Logica {
     RequestQueue requestQueue;
     private static final String URL = "http://192.168.1.100/database_biometria/insertarMedicion.php";
 
+    // Crea la requestQueue al arrancar el servicio
     public void iniciarLogica(){
         requestQueue = Volley.newRequestQueue(MainActivity.getInstance());
     }
 
+    // Añade la medicion
     public void insertarMedicion(final Medicion medicion){
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -67,6 +69,7 @@ public class Logica {
         Log.e("Test", "Enviado");
     }
 
+    // Llama a la funcion de MainActivity
     public void mostrarMedicion(final Medicion medicion){
         MainActivity.getInstance().actualizarUltimaMedicion(medicion);
     }

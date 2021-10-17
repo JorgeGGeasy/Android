@@ -67,20 +67,27 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
     }
 
+    // Devuelve una instancia de MainActivity para poder usar la requestQueue
     public static MainActivity getInstance() {
         return instancia;
     }
+
+    // Devuelve el valor de latitud
     public static double getLatitud() {
         return latitud;
     }
+
+    // Devuelve el valor de longitud
     public static double getLongitud() {
         return longitud;
     }
 
+    // Actualiza la medicion que se muestra en pantalla
     public void actualizarUltimaMedicion(Medicion medicion){
         ultimaMedidaTexto.setText(Double.toString(medicion.getValor()));
     }
 
+    // Detiene el servicio en segundo plano
     public void detenerServicio(){
         stopService(new Intent(MainActivity.this, Servicio.class));
         arrancar.setClickable(true);
@@ -89,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         detener.setBackgroundColor(0xFF700404);
     }
 
+    // Enciende el servivicio en segundo plano
     public void arrancarServicio(){
         startService(new Intent(MainActivity.this, Servicio.class));
         arrancar.setClickable(false);
